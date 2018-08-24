@@ -7,7 +7,7 @@
 3. [GRUB installation from an archiso stick](#grub-installation-from-an-archiso-stick)
 4. [AMDGPU on Southern Island cards (HD7950/70/90(?))](#amdgpu-on-southern-island-cards)
 5. [Polybar libjson error after updating](#polybar-libjson-error-after-updating)
-6. [Save diskspace when using Markdown](s#ave-diskspace-when-using-markdown)
+6. [Save diskspace when using Markdown](#save-diskspace-when-using-markdown)
 7. [File Recovery on Linux](#file-recovery-on-linux)
 8. [Teamspeak mutes Spotify and other audio sources](#teamspeak-mutes-other-audio-sources)
 9. [US international layout without dead keys](#us-international-layout-without-dead-keys)
