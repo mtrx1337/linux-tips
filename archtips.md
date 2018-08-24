@@ -66,7 +66,13 @@ make sure the root partition is mounted in /mnt of your usb stick
 
 # Polybar libjson error after updating
 
-Have you updated polybar and now it's not working anymore? Running <code>polybar example &</code> returns a libjson error? Try this.
+Have you updated polybar and now it's not working anymore? Running <code>polybar example &</code> returns a libjson error?
+
+- rebuild <code>libjson</code> AUR
+
+<code>git clone https://aur.archlinux.org/libjson.git libjson && cd libjson && makepkg -csri< && cd .. && rm -rf libjson</code>
+
+If that doesn't work try the method below. It's dangerous for long time use but is a hacky workaround to get your bar back running.
 
 - Find out which version the old one is
 
