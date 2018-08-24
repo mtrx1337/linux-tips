@@ -3,9 +3,9 @@
 # Table of contents
 
 1. [Printing with an Epson Inkjet printer](#printing-with-an-epson-inkjet-printer)
-2. [LightDM installation](#lightdm-installation)
-3. [GRUB installation from an archiso stick](#grub-installation-from-an-archiso-stick)
-4. [AMDGPU on Southern Island cards (HD7950/70/90(?))](#amdgpu-on-southern-island-cards)
+2. [AMDGPU on Southern Island cards (HD7950/70/90(?))](#amdgpu-on-southern-island-cards)
+3. [LightDM installation](#lightdm-installation)
+4. [GRUB installation from an archiso stick](#grub-installation-from-an-archiso-stick)
 5. [Polybar libjson error after updating](#polybar-libjson-error-after-updating)
 6. [VIM airline font installation](#vim-airline-font-installation)
 7. [Save diskspace when using Markdown](#save-diskspace-when-using-markdown)
@@ -19,6 +19,27 @@
 - Enable and start org.cups.cupsd.service
 - <code>systemctl enable org.cups.cupsd</code>
 - Install <code>epson-inkjet-printer-escpr</code> (AUR)
+
+# AMDGPU on Southern Island cards
+- works with HD7950, HD7970 and 7990(I don't really know but it should.)
+- The whole thing better explained: http://metr1xx.de/archamdgpu.html
+- Install those packages preferably from the official repositories:
+
+  <code> sudo pacman -S mesa lib32-mesa  xf86-video-amdgpu vulkan-radeon libva-vdpau-driver opencl-amd </code>
+
+  if you can't find them in the official repositories install them from the AUR.
+- Add <code>amdgpu</code> as the first module in the <code>#MODULES</code> array in the file <code>/etc/mkinitcpio.conf</code>
+- Create a file called <code>noradeon.conf</code> in <code>/etc/modprobe.d/</code> with the content <code>blacklist radeon</code> or just run:
+  <code>sudo echo "blacklist radeon" > /etc/modprobe.d/noradeon.conf </code>
+- Rebuild the initramfs with <code>sudo mkinitcpio -p linux</code>
+- Set the necessary kernel parameters in GRUB:
+  - Open <code>/etc/default/grub</code>
+  - At the line GRUB_CMDLINE_LINUX_DEFAULT, append the parameters
+    <code>amdgpu.si_support=1 radeon.si_support=0</code>
+    inside of the quotation marks to pass the necessary kernel parameters
+- rebuild the grub config with 
+  <code>grub-mkconfig -o /boot/grub/grub.cfg</code>
+- reboot
 
 # LightDM installation
 - Install <code>lightdm</code> and <code>lightdm-gtk-greeter</code> packages
@@ -42,27 +63,6 @@ make sure the root partition is mounted in /mnt of your usb stick
 - generate / update grub config with 
   <code>grub-mkconfig -o /boot/grub/grub.cfg</code>
 - (Optional) install <code>grub-customizer</code> (AUR) and <code>arch-silence</code> (AUR) grub theme for a nice bootloader screen
-
-# AMDGPU on Southern Island cards
-- works with HD7950, HD7970 and 7990(I don't really know but it should.)
-- The whole thing better explained: http://metr1xx.de/archamdgpu.html
-- Install those packages preferably from the official repositories:
-
-  <code> sudo pacman -S mesa lib32-mesa  xf86-video-amdgpu vulkan-radeon libva-vdpau-driver opencl-amd </code>
-
-  if you can't find them in the official repositories install them from the AUR.
-- Add <code>amdgpu</code> as the first module in the <code>#MODULES</code> array in the file <code>/etc/mkinitcpio.conf</code>
-- Create a file called <code>noradeon.conf</code> in <code>/etc/modprobe.d/</code> with the content <code>blacklist radeon</code> or just run:
-  <code>sudo echo "blacklist radeon" > /etc/modprobe.d/noradeon.conf </code>
-- Rebuild the initramfs with <code>sudo mkinitcpio -p linux</code>
-- Set the necessary kernel parameters in GRUB:
-  - Open <code>/etc/default/grub</code>
-  - At the line GRUB_CMDLINE_LINUX_DEFAULT, append the parameters
-    <code>amdgpu.si_support=1 radeon.si_support=0</code>
-    inside of the quotation marks to pass the necessary kernel parameters
-- rebuild the grub config with 
-  <code>grub-mkconfig -o /boot/grub/grub.cfg</code>
-- reboot
 
 # Polybar libjson error after updating
 
