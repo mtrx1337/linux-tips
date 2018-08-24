@@ -42,7 +42,7 @@ make sure the root partition is mounted in /mnt of your usb stick
   <code>grub-mkconfig -o /boot/grub/grub.cfg</code>
 - (Optional) install <code>grub-customizer</code> (AUR) and <code>arch-silence</code> (AUR) grub theme for a nice bootloader screen
 
-# AMDGPU on Southern Island cards)
+# AMDGPU on Southern Island cards
 - works with HD7950, HD7970 and 7990(I don't really know but it should.)
 - Install those packages preferably from the official repositories:
 
