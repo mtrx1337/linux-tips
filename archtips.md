@@ -7,10 +7,11 @@
 3. [GRUB installation from an archiso stick](#grub-installation-from-an-archiso-stick)
 4. [AMDGPU on Southern Island cards (HD7950/70/90(?))](#amdgpu-on-southern-island-cards)
 5. [Polybar libjson error after updating](#polybar-libjson-error-after-updating)
-6. [Save diskspace when using Markdown](#save-diskspace-when-using-markdown)
-7. [File Recovery on Linux](#file-recovery-on-linux)
-8. [Teamspeak mutes Spotify and other audio sources](#teamspeak-mutes-other-audio-sources)
-9. [US international layout without dead keys](#us-international-layout-without-dead-keys)
+6. [VIM airline font installation](#vim-airline-font-installation)
+7. [Save diskspace when using Markdown](#save-diskspace-when-using-markdown)
+8. [File Recovery on Linux](#file-recovery-on-linux)
+9. [Teamspeak mutes Spotify and other audio sources](#teamspeak-mutes-other-audio-sources)
+10. [US international layout without dead keys](#us-international-layout-without-dead-keys)
 
 # Printing with an Epson Inkjet printer
 - Install <code>cups</code> and <code>cups-pdf</code>
@@ -75,7 +76,7 @@ Have you updated polybar and now it's not working anymore? Running <code>polybar
 
   This is a one line command. (It may be displayed in multiple lines because of the length.)
 
-# Airline font Installation
+# VIM airline font installation
 - Install plug.vim or any other plugin loader supported by airline https://github.com/junegunn/vim-plug#installation
 - Install airline for vim https://github.com/vim-airline/vim-airline#installation
 - Install the powerline fonts with
