@@ -1,30 +1,30 @@
 # metr1xx’ random Arch Linux tips that may or may not help/work you.
 
 # Table of contents
-1. [Printing with an Epson Inkjet printer](inkjet)
-2. [LightDM installation](lightdm)
-3. [GRUB installation from an archiso stick](grubinstallation)
-4. [AMDGPU on Southern Island cards (HD7950/70/90(?))](amdgpu)
-5. [Polybar libjson error after updating](polybarlibjson)
-6. [Save diskspace when using Markdown](markdowndiskspace)
-7. [File Recovery on GNU/Linux](filerecovery)
-8. [Teamspeak mutes other audio sources](teamspeak)
-9. [US international layout without dead keys](usint)
 
+1. [Printing with an Epson Inkjet printer](printing-with-an-epson-inkjet-printer)
+2. (LightDM installation](lightdm-installation)
+3. [GRUB installation from an archiso stick](grub-installation-from-archiso-stick)
+4. [AMDGPU on Southern Island cards (HD7950/70/90(?))](amdgpu-on-southern-island-cards)
+5. [Polybar libjson error after updating](polybar-libjson-error-after-updating)
+6. [Save diskspace when using Markdown](save-diskspace-when-using-markdown)
+7. [File Recovery on Linux](file-recovery-on-linux)
+8. [Teamspeak mutes other audio sources](teamspeak-mutes-other-audio-sources)
+9. [US international layout without dead keys](us-international-without-dead-keys)
 
-## Printing with an Epson Inkjet printer<a name="inkjet"></a>
+## Printing with an Epson Inkjet printer
 - Install <code>cups</code> and <code>cups-pdf</code>
 - Enable and start org.cups.cupsd.service
 - <code>systemctl enable org.cups.cupsd</code>
 - Install <code>epson-inkjet-printer-escpr</code> (AUR)
 
-## LightDM installation<a name="lightdm"></a>
+## LightDM installation
 - Install <code>lightdm</code> and <code>lightdm-gtk-greeter</code> packages
 - Enable lightdm.service to start it at boot
   <code>sudo systemctl enable lightdm</code>
 - Install <code>lightdm-gtk-greeter-settings</code> to configure lightdm
 
-## GRUB installation from an archiso stick<a name="grubinstallation"></a>
+## GRUB installation from an archiso stick
 make sure the root partition is mounted in /mnt of your usb stick
   (where sda2 is your ROOT partition)
   <code>mount /dev/sda2 /mnt</code>
@@ -41,7 +41,8 @@ make sure the root partition is mounted in /mnt of your usb stick
   <code>grub-mkconfig -o /boot/grub/grub.cfg</code>
 - (Optional) install <code>grub-customizer</code> (AUR) and <code>arch-silence</code> (AUR) grub theme for a nice bootloader screen
 
-## AMDGPU on Southern Island cards (HD7950/70/90(?))<a name="amdgpu"></a>
+## AMDGPU on Southern Island cards)
+- works with HD7950, HD7970 and 7990(I don't really know but it should.)
 - Install those packages preferably from the official repositories:
 
   <code> sudo pacman -S mesa lib32-mesa  xf86-video-amdgpu vulkan-radeon libva-vdpau-driver opencl-amd </code>
@@ -60,7 +61,7 @@ make sure the root partition is mounted in /mnt of your usb stick
   <code>grub-mkconfig -o /boot/grub/grub.cfg</code>
 - reboot
 
-## Polybar libjson error after updating<a name="polybarlibjson"></a>
+## Polybar libjson error after updating
 
 Have you updated polybar and now it's not working anymore? Running <code>polybar example &</code> returns a libjson error? Try this.
 
@@ -82,19 +83,19 @@ Have you updated polybar and now it's not working anymore? Running <code>polybar
   or if you only want the "hack" font, install <code>ttf-hack</code> [community]
 - Select a font from here https://github.com/powerline/fonts in your terminal emulator
 
-## Save diskspace when using Markdown<a name="markdowndiskspace"></a>
+## Save diskspace when using Markdown
 - Install <code>pandoc-bin</code> (AUR) instead of <code>pandoc</code> [community]
 - save 700MB diskspace (taken up by haskell dependencies of the [community] repo)
 - https://pandoc.org/MANUAL.html#pandocs-markdown
 
-## File Recovery on GNU/Linux<a name="filerecovery"></a>
+## File Recovery on GNU/Linux
 - use the tool <code>ddrescue</code>
 
 - only use the broken disk in read-only mode. DON’T write to it or your lost data can be overwritten.
 
   https://wiki.archlinux.org/index.php/file_recovery
 
-## TeamSpeak mutes Spotify and other audio sources <a name="teamspeak"></a>
+## TeamSpeak mutes Spotify and other audio sources
 - open the pulse audio config file <code>sudo nvim /etc/pulse/default.pa</code>
 - comment out the line 
 
@@ -102,7 +103,7 @@ Have you updated polybar and now it's not working anymore? Running <code>polybar
 
 - save, close the file and reboot
 
-## US international layout without dead keys<a name="usint"></a>
+## US international layout without dead keys
 - open your xinitrc <code>nvim /etc/X11/xinit/xinitrc</code>
 
 - append this at the end of the file:
