@@ -82,7 +82,7 @@ Have you updated polybar and now it's not working anymore? Running <code>polybar
 - Install plug.vim or any other plugin loader supported by airline https://github.com/junegunn/vim-plug#installation
 - Install airline for vim https://github.com/vim-airline/vim-airline#installation
 - Install the powerline fonts with
-  <code>git clone https://github.com/powerline/fonts && cd fonts && chmod u+x install.sh && sh install.sh </code>
+  <code>git clone https://aur.archlinux.org/powerline-fonts-git.git powerlineFonts && cd powerlineFonts && makepkg -csri< && cd .. && rm -rf powerlineFonts</code>
   or if you only want the "hack" font, install <code>ttf-hack</code> [community]
 - Select a font from here https://github.com/powerline/fonts in your terminal emulator
 
