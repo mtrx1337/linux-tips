@@ -1,4 +1,4 @@
-# metr1xx’ random Arch Linux tips that may or may not help/work you.
+# metr1xx’ random Arch Linux tips that may or may not help you / work.
 
 # Table of contents
 
