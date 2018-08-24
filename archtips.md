@@ -15,6 +15,7 @@
 
 # Printing with an Epson Inkjet printer
 - Install <code>cups</code> and <code>cups-pdf</code>
+- CUPS installation better explained: http://metr1xx.de/archprinting.html
 - Enable and start org.cups.cupsd.service
 - <code>systemctl enable org.cups.cupsd</code>
 - Install <code>epson-inkjet-printer-escpr</code> (AUR)
@@ -44,6 +45,7 @@ make sure the root partition is mounted in /mnt of your usb stick
 
 # AMDGPU on Southern Island cards
 - works with HD7950, HD7970 and 7990(I don't really know but it should.)
+- The whole thing better explained: http://metr1xx.de/archamdgpu.html
 - Install those packages preferably from the official repositories:
 
   <code> sudo pacman -S mesa lib32-mesa  xf86-video-amdgpu vulkan-radeon libva-vdpau-driver opencl-amd </code>
