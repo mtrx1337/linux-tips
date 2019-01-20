@@ -15,73 +15,73 @@
 11. [Fix PulseAudio crackeling](#pulseaudio-crackeling)
 
 # Printing with an Epson Inkjet printer
-- Install <code>cups</code> and <code>cups-pdf</code>
+- Install `cups` and `cups-pdf`
 - CUPS installation better explained: http://metr1xx.de/archprinting.html
 - Enable and start org.cups.cupsd.service
-- <code>systemctl enable org.cups.cupsd</code>
-- Install <code>epson-inkjet-printer-escpr</code> (AUR)
+- `systemctl enable org.cups.cupsd`
+- Install `epson-inkjet-printer-escpr` (AUR)
 
 # AMDGPU on Southern Island cards
 - works with HD7950, HD7970 and 7990(I don't really know but it should.)
 - The whole thing better explained: http://metr1xx.de/archamdgpu.html
 - Install those packages preferably from the official repositories:
 
-  <code> sudo pacman -S mesa lib32-mesa  xf86-video-amdgpu vulkan-radeon libva-vdpau-driver opencl-amd </code>
+  ` sudo pacman -S mesa lib32-mesa  xf86-video-amdgpu vulkan-radeon libva-vdpau-driver opencl-amd `
 
   if you can't find them in the official repositories install them from the AUR.
-- Add <code>amdgpu</code> as the first module in the <code>#MODULES</code> array in the file <code>/etc/mkinitcpio.conf</code>
-- Create a file called <code>noradeon.conf</code> in <code>/etc/modprobe.d/</code> with the content <code>blacklist radeon</code> or just run:
-  <code>sudo echo "blacklist radeon" > /etc/modprobe.d/noradeon.conf </code>
-- Rebuild the initramfs with <code>sudo mkinitcpio -p linux</code>
+- Add `amdgpu` as the first module in the `#MODULES` array in the file `/etc/mkinitcpio.conf`
+- Create a file called `noradeon.conf` in `/etc/modprobe.d/` with the content `blacklist radeon` or just run:
+  `sudo echo "blacklist radeon" > /etc/modprobe.d/noradeon.conf `
+- Rebuild the initramfs with `sudo mkinitcpio -p linux`
 - Set the necessary kernel parameters in GRUB:
-  - Open <code>/etc/default/grub</code>
+  - Open `/etc/default/grub`
   - At the line GRUB_CMDLINE_LINUX_DEFAULT, append the parameters
-    <code>amdgpu.si_support=1 radeon.si_support=0</code>
+    `amdgpu.si_support=1 radeon.si_support=0`
     inside of the quotation marks to pass the necessary kernel parameters
 - rebuild the grub config with 
-  <code>grub-mkconfig -o /boot/grub/grub.cfg</code>
+  `grub-mkconfig -o /boot/grub/grub.cfg`
 - reboot
 
 # LightDM installation
-- Install <code>lightdm</code> and <code>lightdm-gtk-greeter</code> packages
+- Install `lightdm` and `lightdm-gtk-greeter` packages
 - Enable lightdm.service to start it at boot
-  <code>sudo systemctl enable lightdm</code>
-- Install <code>lightdm-gtk-greeter-settings</code> to configure lightdm
+  `sudo systemctl enable lightdm`
+- Install `lightdm-gtk-greeter-settings` to configure lightdm
 
 # GRUB installation from an archiso stick
 make sure the root partition is mounted in /mnt of your usb stick
   (where sda2 is your ROOT partition)
-  <code>mount /dev/sda2 /mnt</code>
+  `mount /dev/sda2 /mnt`
 - make sure the UEFI partition is mounted in /mnt/boot of your usb stick
   (where sda1 is your BOOT partition)
-  <code>mount /dev/sda1 /mnt/boot</code>
+  `mount /dev/sda1 /mnt/boot`
 - change your root directory from the stick to your arch installation
-  <code>arch-chroot /mnt</code>
+  `arch-chroot /mnt`
 - install grub and efibootmgr
-  <code>pacman -S grub efibootmgr</code>
+  `pacman -S grub efibootmgr`
 - install grub as your bootloader with 
-  <code>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB-Bootloader</code>
+  `grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB-Bootloader`
 - generate / update grub config with 
-  <code>grub-mkconfig -o /boot/grub/grub.cfg</code>
-- (Optional) install <code>grub-customizer</code> (AUR) and <code>arch-silence</code> (AUR) grub theme for a nice bootloader screen
+  `grub-mkconfig -o /boot/grub/grub.cfg`
+- (Optional) install `grub-customizer` (AUR) and `arch-silence` (AUR) grub theme for a nice bootloader screen
 
 # Polybar libjson error after updating
 
-Have you updated polybar and now it's not working anymore? Running <code>polybar example &</code> returns a libjson error?
+Have you updated polybar and now it's not working anymore? Running `polybar example &` returns a libjson error?
 
-- rebuild <code>libjson</code> AUR
+- rebuild `libjson` AUR
 
-<code>git clone https://aur.archlinux.org/libjson.git libjson && cd libjson && makepkg -csri< && cd .. && rm -rf libjson</code>
+`git clone https://aur.archlinux.org/libjson.git libjson && cd libjson && makepkg -csri< && cd .. && rm -rf libjson`
 
 If that doesn't work try the method below. It's dangerous for long time use but is a hacky workaround to get your bar back running.
 
 - Find out which version the old one is
 
-  <code> ls -l | grep "libjsoncpp.so" </code>
+  ` ls -l | grep "libjsoncpp.so" `
 
 - delete the file and create a symlink to the new one until the dev remembers to update the files again.
 
-  <code> sudo ln -sf /lib/libjsoncpp.so.NEWVERSIONNUMBER /lib/libjsoncpp.so.OLDVERSIONNUMBERNVIM/VIM </code>
+  ` sudo ln -sf /lib/libjsoncpp.so.NEWVERSIONNUMBER /lib/libjsoncpp.so.OLDVERSIONNUMBERNVIM/VIM `
 
   This is a one line command. (It may be displayed in multiple lines because of the length.)
 
@@ -89,32 +89,32 @@ If that doesn't work try the method below. It's dangerous for long time use but 
 - Install plug.vim or any other plugin loader supported by airline https://github.com/junegunn/vim-plug#installation
 - Install airline for vim https://github.com/vim-airline/vim-airline#installation
 - Install the powerline fonts with
-  <code>git clone https://aur.archlinux.org/powerline-fonts-git.git powerlineFonts && cd powerlineFonts && makepkg -csri< && cd .. && rm -rf powerlineFonts</code>
-  or if you only want the "hack" font, install <code>ttf-hack</code> [community]
+  `git clone https://aur.archlinux.org/powerline-fonts-git.git powerlineFonts && cd powerlineFonts && makepkg -csri< && cd .. && rm -rf powerlineFonts`
+  or if you only want the "hack" font, install `ttf-hack` [community]
 - Select a font from here https://github.com/powerline/fonts in your terminal emulator
 
 # Save diskspace when using Markdown
-- Install <code>pandoc-bin</code> (AUR) instead of <code>pandoc</code> [community]
+- Install `pandoc-bin` (AUR) instead of `pandoc` [community]
 - save 700MB diskspace (taken up by haskell dependencies of the [community] repo)
 - https://pandoc.org/MANUAL.html#pandocs-markdown
 
 # File Recovery on Linux
-- use the tool <code>ddrescue</code>
+- use the tool `ddrescue`
 
 - only use the broken disk in read-only mode. DON’T write to it or your lost data can be overwritten.
 
   https://wiki.archlinux.org/index.php/file_recovery
 
 # TeamSpeak mutes other audio sources
-- open the pulse audio config file <code>sudo nvim /etc/pulse/default.pa</code>
+- open the pulse audio config file `sudo nvim /etc/pulse/default.pa`
 - comment out the line 
 
-  <code>load-module module-role-cork</code>
+  `load-module module-role-cork`
 
 - save, close the file and reboot
 
 # US international layout without dead keys
-- open your xinitrc <code>nvim /etc/X11/xinit/xinitrc</code>
+- open your xinitrc `nvim /etc/X11/xinit/xinitrc`
 
 - append this at the end of the file:
 
