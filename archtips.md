@@ -12,6 +12,7 @@
 8. [File Recovery on Linux](#file-recovery-on-linux)
 9. [Teamspeak mutes Spotify and other audio sources](#teamspeak-mutes-other-audio-sources)
 10. [US international layout without dead keys](#us-international-layout-without-dead-keys)
+11. [Fix PulseAudio crackeling](#pulseaudio-crackeling)
 
 # Printing with an Epson Inkjet printer
 - Install <code>cups</code> and <code>cups-pdf</code>
@@ -124,3 +125,8 @@ Section "InputClass"  Identifier "Keyboard Defaults"
     Option "XkbVariant" altgr-intl"
 EndSection
 ```
+
+# PulseAudio Crackeling
+- search for `load-module module-udev-detect` in `/etc/pulse/default.pa`
+- append `tsched=0` to the end of it with a space in between
+- either restart or run `pulseaudio -k && pulseaudio --start`
