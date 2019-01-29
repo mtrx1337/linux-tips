@@ -126,7 +126,7 @@ Section "InputClass"  Identifier "Keyboard Defaults"
 EndSection
 ```
 
-# PulseAudio Crackeling
+# PulseAudio Crackling
 - search for `load-module module-udev-detect` in `/etc/pulse/default.pa`
 - append `tsched=0` to the end of it with a space in between
 - either restart or run `pulseaudio -k && pulseaudio --start`
