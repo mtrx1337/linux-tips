@@ -12,7 +12,7 @@
 8. [File Recovery on Linux](#file-recovery-on-linux)
 9. [Teamspeak mutes Spotify and other audio sources](#teamspeak-mutes-other-audio-sources)
 10. [US international layout without dead keys](#us-international-layout-without-dead-keys)
-11. [Fix PulseAudio crackeling](#fix-pulseaudio-crackeling)
+11. [Fix PulseAudio crackling](#fix-pulseaudio-crackling)
 12. [Eduroam on Void with NetworkManager and without a DE](#eduroam-with-networkmanager-and-without-a-de)
 
 # Printing with an Epson Inkjet printer
