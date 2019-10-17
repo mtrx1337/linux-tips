@@ -1,4 +1,4 @@
-# mtrx’ random Linux tips that may or may not help you / work.
+# mtrx’ random Linux tips that may or may not help you or work.
 
 # Table of contents
 
@@ -12,8 +12,8 @@
 8. [File Recovery on Linux](#file-recovery-on-linux)
 9. [Teamspeak mutes Spotify and other audio sources](#teamspeak-mutes-other-audio-sources)
 10. [US international layout without dead keys](#us-international-layout-without-dead-keys)
-11. [Fix PulseAudio crackeling](#pulseaudio-crackeling)
-12. [Eduroam on Void with NetworkManager and without a DE](#eduroam-on-void-with-networkmanager-and-without-a-de)
+11. [Fix PulseAudio crackeling](#fix-pulseaudio-crackeling)
+12. [Eduroam on Void with NetworkManager and without a DE](#eduroam-with-networkmanager-and-without-a-de)
 
 # Printing with an Epson Inkjet printer
 - Install `cups` and `cups-pdf`
@@ -127,7 +127,7 @@ Section "InputClass"  Identifier "Keyboard Defaults"
 EndSection
 ```
 
-# PulseAudio Crackling
+# Fix PulseAudio Crackling
 - search for `load-module module-udev-detect` in `/etc/pulse/default.pa`
 - append `tsched=0` to the end of it with a space in between
 - either restart or run `pulseaudio -k && pulseaudio --start`
