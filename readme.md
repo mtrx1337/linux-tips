@@ -13,6 +13,7 @@
 9. [Teamspeak mutes Spotify and other audio sources](#teamspeak-mutes-other-audio-sources)
 10. [US international layout without dead keys](#us-international-layout-without-dead-keys)
 11. [Fix PulseAudio crackeling](#pulseaudio-crackeling)
+12. [Eduroam on Void with NetworkManager and without a DE](#eduroam-on-void-with-networkmanager-and-without-a-de)
 
 # Printing with an Epson Inkjet printer
 - Install `cups` and `cups-pdf`
@@ -130,3 +131,27 @@ EndSection
 - search for `load-module module-udev-detect` in `/etc/pulse/default.pa`
 - append `tsched=0` to the end of it with a space in between
 - either restart or run `pulseaudio -k && pulseaudio --start`
+
+## Eduroam with NetworkManager and without a DE
+
+1. Download the correct eduroam_cat installer for your university from [here](https://cat.eduroam.org/)
+2. Install the following packages
+    ```
+    xbps-install NetworkManager dbus python3 python3-dbus
+    ```
+    dbus and python3 are necessary because the cat installer depends on dbus to talk to NetworkManager.
+3. Enable and start the service for dbus and NetworkManager
+    ```bash
+    ln -s /etc/sv/NetworkManager /var/service
+    ln -s /etc/sv/dbus /var/service
+    ```
+    Just to make sure:
+    ```bash
+    sv up NetworkManager
+    sv up dbus
+    ```
+4. Execute the eduroam_cat installer with root permissions and follow the instructions.
+    ```
+    sudo /path/to/eduroam-linux-XXXXX-eduroam.py
+    ```
+
